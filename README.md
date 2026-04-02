@@ -30,10 +30,10 @@ The pipeline:
 
 ## 2 — Dataset
 
-| Source | Description | Access |
-|--------|-------------|--------|
-| **PJM Interconnection** (via [`gridstatus`](https://github.com/gridstatus/gridstatus)) | Hourly real-time LMP ($/MWh) for PJM RTO aggregate node, 2022–2024 | Free, no API key required |
-| **Open-Meteo Historical Archive** | Hourly temperature, humidity, wind speed, precipitation for Philadelphia, PA (central PJM footprint) | Free, no API key required |
+| Source | Description |
+|--------|-------------|
+| **PJM Interconnection** (via [`gridstatus`](https://github.com/gridstatus/gridstatus)) | Hourly real-time LMP ($/MWh) for PJM RTO aggregate node, 2022–2024 |
+| **Open-Meteo Historical Archive** | Hourly temperature, humidity, wind speed, precipitation for Philadelphia, PA (central PJM footprint) | 
 
 The download step pulls **~26,000 hourly observations** per year of LMP data
 and matching weather data.  Total dataset size for the default 3-year window
