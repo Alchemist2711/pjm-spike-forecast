@@ -2,7 +2,6 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)]()
 [![Test Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen.svg)]()
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)]()
 
 ## 1 — Purpose
 
