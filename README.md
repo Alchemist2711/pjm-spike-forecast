@@ -49,7 +49,7 @@ to run without network access for immediate verification.
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/pjm-spike-forecast.git
+git clone https://github.com/Alchemist2711/pjm-spike-forecast.git
 cd pjm-spike-forecast
 
 # Create a virtual environment (recommended)
