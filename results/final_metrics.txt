@@ -1,0 +1,23 @@
+=== Spike Classification (LightGBM) ===
+  accuracy            : 0.9504306220095694
+  precision           : 0.4879356568364611
+  recall              : 0.728
+  f1                  : 0.5842696629213483
+  true_pos            : 182
+  false_pos           : 191
+  true_neg            : 4784
+  false_neg           : 68
+  auc_roc             : 0.9704273366834172
+  avg_precision       : 0.6086027150355541
+
+=== Price Regression (LightGBM) ===
+  rmse                : 17.20312159599114
+  mae                 : 6.484611457963049
+  mape                : 13.639842648574344
+  r2                  : 0.7677207248561295
+
+=== Price Regression (Baseline) ===
+  rmse                : 37.838267145523275
+  mae                 : 25.7250388260836
+  mape                : 77.47033862634596
+  r2                  : -0.12372080634741223
