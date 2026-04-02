@@ -237,7 +237,3 @@ be deployed in a real trading or risk management system.
 SHAP (SHapley Additive exPlanations) values decompose each prediction into
 per-feature contributions, revealing which drivers (e.g., recent price lags,
 temperature, hour-of-day) matter most.
-
-## 9 — License
-
-MIT
