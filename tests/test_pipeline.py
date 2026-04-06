@@ -189,8 +189,8 @@ class TestPipelineConfig:
 
 class TestStepDownload:
 
-    @patch("pjm_spike_forecast.data.download_nyiso_lmp")
-    @patch("pjm_spike_forecast.data.download_weather")
+    @patch("pjm_spike_forecast.pipeline.download_nyiso_lmp")
+    @patch("pjm_spike_forecast.pipeline.download_weather")
     def test_calls_both_downloaders(self, mock_weather, mock_lmp, tmp_path):
         cfg = PipelineConfig(data_dir=tmp_path / "data",
                              results_dir=tmp_path / "res")
@@ -198,16 +198,16 @@ class TestStepDownload:
         mock_lmp.assert_called_once()
         mock_weather.assert_called_once()
 
-    @patch("pjm_spike_forecast.data.download_nyiso_lmp")
-    @patch("pjm_spike_forecast.data.download_weather")
+    @patch("pjm_spike_forecast.pipeline.download_nyiso_lmp")
+    @patch("pjm_spike_forecast.pipeline.download_weather")
     def test_creates_data_dir(self, mock_weather, mock_lmp, tmp_path):
         data_dir = tmp_path / "nested" / "data"
         cfg = PipelineConfig(data_dir=data_dir, results_dir=tmp_path / "res")
         step_download(cfg)
         assert data_dir.exists()
 
-    @patch("pjm_spike_forecast.data.download_nyiso_lmp")
-    @patch("pjm_spike_forecast.data.download_weather")
+    @patch("pjm_spike_forecast.pipeline.download_nyiso_lmp")
+    @patch("pjm_spike_forecast.pipeline.download_weather")
     def test_passes_correct_paths(self, mock_weather, mock_lmp, tmp_path):
         cfg = PipelineConfig(data_dir=tmp_path / "data",
                              results_dir=tmp_path / "res")

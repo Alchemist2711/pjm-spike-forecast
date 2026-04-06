@@ -27,14 +27,14 @@ from pjm_spike_forecast.evaluation import (
 @pytest.fixture
 def small_df():
     """30 days of raw LMP + weather data (too small for 6-month CV)."""
-    from pjm_spike_forecast.data_ingestion import build_demo_dataset
+    from pjm_spike_forecast.data import build_demo_dataset
     return build_demo_dataset(n_days=30, seed=0)
 
 
 @pytest.fixture
 def featured_df():
     """~6 months of fully-featured data sufficient for 2-fold CV."""
-    from pjm_spike_forecast.data_ingestion import build_demo_dataset
+    from pjm_spike_forecast.data import build_demo_dataset
     from pjm_spike_forecast.features import build_feature_matrix
     raw = build_demo_dataset(n_days=180, seed=42)
     return build_feature_matrix(raw, cfg=None)

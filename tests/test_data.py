@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 from pjm_spike_forecast.data import (
+    _download_nyiso_month,
     build_demo_dataset,
+    download_nyiso_lmp,
+    download_pjm_lmp,
+    download_weather,
     load_lmp,
     load_weather,
     merge_lmp_weather,
