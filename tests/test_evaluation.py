@@ -332,7 +332,7 @@ class TestRunWalkForwardCv:
     def test_baseline_uses_hourly_baseline_model(self, featured_df, feature_cols):
         from pjm_spike_forecast.models import HourlyBaseline
         cfg = BacktestConfig(n_splits=1, train_months=1, test_months=1, gap_hours=6)
-        with patch("pjm_spike_forecast.evaluation.HourlyBaseline", wraps=HourlyBaseline) as mock_bl:
+        with patch("pjm_spike_forecast.models.HourlyBaseline", wraps=HourlyBaseline) as mock_bl:
             run_walk_forward_cv(
                 featured_df, feature_cols, cfg=cfg, model_type="baseline"
             )
@@ -343,7 +343,7 @@ class TestRunWalkForwardCv:
     def test_lgbm_uses_spike_classifier_and_price_regressor(self, featured_df, feature_cols):
         from pjm_spike_forecast.models import SpikeClassifier, PriceRegressor
         cfg = BacktestConfig(n_splits=1, train_months=1, test_months=1, gap_hours=6)
-        with patch("pjm_spike_forecast.evaluation.SpikeClassifier", wraps=SpikeClassifier) as mock_clf:
+        with patch("pjm_spike_forecast.models.SpikeClassifier", wraps=SpikeClassifier) as mock_clf:
             run_walk_forward_cv(
                 featured_df, feature_cols, cfg=cfg, model_type="lgbm"
             )
