@@ -1,7 +1,7 @@
 # NY ISO Electricity Price Spike Detection & Forecasting
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)]()
-[![Test Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen.svg)]()
+[![Test Coverage](https://img.shields.io/badge/coverage-99%25-brightgreen.svg)]()
 
 ## 1 — Purpose
 
