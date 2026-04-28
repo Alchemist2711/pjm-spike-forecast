@@ -176,6 +176,8 @@ pjm-spike-forecast/
 │   ├── test_models.py
 │   ├── test_evaluation.py
 │   └── test_pipeline.py
+│   └── test_visualization.py
+│   └── test_config.py
 │
 ├── notebooks/                      # Jupyter notebooks (interactive walkthrough)
 │   ├── 01_data_exploration.ipynb
