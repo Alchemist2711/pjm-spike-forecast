@@ -1,4 +1,4 @@
-# PJM Electricity Price Spike Detection & Forecasting
+# NY ISO Electricity Price Spike Detection & Forecasting
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)]()
 [![Test Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen.svg)]()
@@ -168,16 +168,15 @@ pjm-spike-forecast/
 │   ├── visualization.py            # All plotting functions
 │   └── pipeline.py                 # End-to-end orchestration + CLI
 │
-├── tests/                          # pytest suite (91 tests, 84% coverage)
+├── tests/                          # pytest suite (333 tests, >80% coverage)
 │   ├── conftest.py                 # Shared fixtures
-│   ├── test_config.py
-│   ├── test_data.py
-│   ├── test_features.py
-│   ├── test_models.py
-│   ├── test_evaluation.py
-│   └── test_pipeline.py
-│   └── test_visualization.py
-│   └── test_config.py
+│   ├── test_config.py              # Config dataclass tests
+│   ├── test_data.py                # Data download & loading tests
+│   ├── test_features.py            # Feature engineering tests
+│   ├── test_models.py              # Model fit/predict tests
+│   ├── test_evaluation.py          # Metrics & walk-forward CV tests
+│   ├── test_visualization.py       # Plotting smoke tests
+│   └── test_pipeline.py            # End-to-end pipeline tests
 │
 ├── notebooks/                      # Jupyter notebooks (interactive walkthrough)
 │   ├── 01_data_exploration.ipynb
@@ -205,14 +204,14 @@ pjm-spike-forecast/
 ## 7 — Running Tests
 
 ```bash
-# Run all 91 tests with coverage report
+# Run all tests with coverage report
 pytest tests/ -v --cov=pjm_spike_forecast --cov-report=term-missing
 
 # Or via Makefile
 make test
 ```
 
-Current coverage: **84%** (threshold: 80%).
+Current coverage: **>80%** (threshold: 80%).
 
 ## 8 — Methodology
 
