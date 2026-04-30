@@ -67,6 +67,7 @@ pip install -e ".[dev]"
 **Requirements:** Python ≥ 3.10. All dependencies are listed in `pyproject.toml` and will be installed automatically.
 
 ## 4 — Usage
+Note: Use 'python' or 'python3' depending on your local system. 
 
 ### Quick demo (no download needed)
 
