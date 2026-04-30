@@ -248,5 +248,5 @@ https://github.com/Alchemist2711/pjm-spike-forecast/pull/3
 
 ### Authors
 ORIE-5270 Big Data Technology Project Team
-Kanishk Agarwal
-Pratvi Shah
+- Kanishk Agarwal
+- Pratvi Shah
