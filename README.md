@@ -54,7 +54,7 @@ git clone https://github.com/Alchemist2711/pjm-spike-forecast.git
 cd pjm-spike-forecast
 
 # Create a virtual environment (recommended)
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate   # Linux / macOS
 # .venv\Scripts\activate    # Windows
 
@@ -71,7 +71,7 @@ pip install -e ".[dev]"
 ### Quick demo (no download needed)
 
 ```bash
-python -m pjm_spike_forecast.pipeline --demo --output-dir results
+python3 -m pjm_spike_forecast.pipeline --demo --output-dir results
 ```
 
 This runs the full pipeline on the built-in demo dataset and writes all
@@ -81,10 +81,10 @@ outputs to `results/`.
 
 ```bash
 # Step 1: Download data (takes ~5 minutes depending on connection)
-python -m pjm_spike_forecast.pipeline --download-only
+python3 -m pjm_spike_forecast.pipeline --download-only
 
 # Step 2: Run the pipeline
-python -m pjm_spike_forecast.pipeline --data-dir data/raw --output-dir results
+python3 -m pjm_spike_forecast.pipeline --data-dir data/raw --output-dir results
 ```
 
 ### Makefile shortcuts
@@ -101,7 +101,7 @@ make clean         # remove build artifacts
 ### CLI options
 
 ```
-python -m pjm_spike_forecast.pipeline --help
+python3 -m pjm_spike_forecast.pipeline --help
 
 Options:
   --download-only       Download data and exit
