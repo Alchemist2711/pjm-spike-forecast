@@ -1,14 +1,15 @@
-# PJM Electricity Price Spike Detection & Forecasting
+# NY ISO Electricity Price Spike Detection & Forecasting
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)]()
-[![Test Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen.svg)]()
+[![Test Coverage](https://img.shields.io/badge/coverage-99%25-brightgreen.svg)]()
 
 ## 1 — Purpose
 
 This package builds an end-to-end pipeline for **detecting and forecasting
-intraday electricity price spikes** in the PJM Interconnection market — the
-largest wholesale electricity market in the United States, serving 65 million
-customers across 13 states.
+intraday electricity price spikes** in US wholesale electricity markets — using
+NYISO (New York ISO) as the default freely accessible data source, with optional
+support for PJM Interconnection, the largest wholesale electricity market in the
+United States, serving 65 million customers across 13 states.
 
 Electricity prices exhibit heavy-tailed distributions: most hours trade
 between $20–40/MWh, but demand surges (heat waves, cold snaps, generator
@@ -17,8 +18,8 @@ predicting these spikes is critical for grid operators, power traders, and
 industrial consumers managing procurement risk.
 
 The pipeline:
-1. **Downloads** real hourly LMP (Locational Marginal Price) data from PJM
-   and weather data from Open-Meteo.
+1. **Downloads** real hourly LMP (Locational Marginal Price) data from NYISO
+   (no API key required) or optionally from PJM, plus weather data from Open-Meteo.
 2. **Engineers features** — lag values, rolling statistics, calendar/cyclical
    encodings, weather transformations, and a rolling spike label.
 3. **Trains models** — an hourly-average baseline and LightGBM classifiers /
@@ -32,8 +33,9 @@ The pipeline:
 
 | Source | Description |
 |--------|-------------|
-| **PJM Interconnection** (via [`gridstatus`](https://github.com/gridstatus/gridstatus)) | Hourly real-time LMP ($/MWh) for PJM RTO aggregate node, 2022–2024 |
+| **NYISO** (via public CSV archive, no API key) | Hourly real-time zonal LBMP ($/MWh) for N.Y.C. zone, 2022–2024 |
 | **Open-Meteo Historical Archive** | Hourly temperature, humidity, wind speed, precipitation for Philadelphia, PA (central PJM footprint) | 
+| **PJM Interconnection** (via `gridstatus`, optional) | Hourly real-time LMP for PJM RTO node — requires a free API key at apiportal.pjm.com |
 
 The download step pulls **~26,000 hourly observations** per year of LMP data
 and matching weather data.  Total dataset size for the default 3-year window
@@ -60,8 +62,9 @@ source .venv/bin/activate   # Linux / macOS
 pip install -e ".[dev]"
 ```
 
-**Requirements:** Python ≥ 3.10.  All dependencies are listed in
-`pyproject.toml` and will be installed automatically.
+> **No API key required** for the default download path (NYISO public archive). PJM data is available as an optional source — see §2.
+
+**Requirements:** Python ≥ 3.10. All dependencies are listed in `pyproject.toml` and will be installed automatically.
 
 ## 4 — Usage
 
@@ -165,14 +168,15 @@ pjm-spike-forecast/
 │   ├── visualization.py            # All plotting functions
 │   └── pipeline.py                 # End-to-end orchestration + CLI
 │
-├── tests/                          # pytest suite (91 tests, 84% coverage)
+├── tests/                          # pytest suite (333 tests, >80% coverage)
 │   ├── conftest.py                 # Shared fixtures
-│   ├── test_config.py
-│   ├── test_data.py
-│   ├── test_features.py
-│   ├── test_models.py
-│   ├── test_evaluation.py
-│   └── test_pipeline.py
+│   ├── test_config.py              # Config dataclass tests
+│   ├── test_data.py                # Data download & loading tests
+│   ├── test_features.py            # Feature engineering tests
+│   ├── test_models.py              # Model fit/predict tests
+│   ├── test_evaluation.py          # Metrics & walk-forward CV tests
+│   ├── test_visualization.py       # Plotting smoke tests
+│   └── test_pipeline.py            # End-to-end pipeline tests
 │
 ├── notebooks/                      # Jupyter notebooks (interactive walkthrough)
 │   ├── 01_data_exploration.ipynb
@@ -200,14 +204,14 @@ pjm-spike-forecast/
 ## 7 — Running Tests
 
 ```bash
-# Run all 91 tests with coverage report
+# Run all tests with coverage report
 pytest tests/ -v --cov=pjm_spike_forecast --cov-report=term-missing
 
 # Or via Makefile
 make test
 ```
 
-Current coverage: **84%** (threshold: 80%).
+Current coverage: **>80%** (threshold: 80%).
 
 ## 8 — Methodology
 

@@ -12,7 +12,6 @@ requires-python = ">=3.10"
 authors = [
     {name = "Kanishk"},
 ]
-
 dependencies = [
     "pandas>=2.0",
     "numpy>=1.24",
@@ -23,6 +22,7 @@ dependencies = [
     "shap>=0.42",
     "joblib>=1.3",
     "requests>=2.31",
+    "tzdata>=2023.3"
 ]
 
 [project.optional-dependencies]
@@ -46,17 +46,18 @@ addopts = "--cov=pjm_spike_forecast --cov-report=term-missing --cov-report=html 
 
 [tool.coverage.run]
 source = ["pjm_spike_forecast"]
-omit = ["*/tests/*", "*/visualization.py"]
+omit = ["*/tests/*"]                    
 
 [tool.coverage.report]
 fail_under = 80
 show_missing = true
 exclude_lines = [
     "pragma: no cover",
-    "def download_nyiso",
-    "def _download_nyiso",
-    "def download_pjm",
-    "def download_weather",
-    "resp = requests.get",
-    "import gridstatus",
+    "def download_pjm",                 # requires paid PJM API key — untestable without live creds
+    "def download_weather",             # live network call to Open-Meteo
+    "resp = requests.get",              # live HTTP — covered by mock tests in test_data.py
+    "import gridstatus",                # optional dependency not installed in CI by default
 ]
+# Removed from exclude_lines:
+#   "def download_nyiso"    – now covered via unittest.mock.patch in test_data.py
+#   "def _download_nyiso"   – same
